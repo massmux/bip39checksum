@@ -36,7 +36,6 @@ except:
     print("Error while reading BIP39 words list file")
     sys.exit()
     
-
 try:
     print("Reading your 23 words BIP39 sequence to check..")
     f=open(sequence)
@@ -46,10 +45,9 @@ except:
     print("Error reading your 23 words BIP39 sequence to check")
     sys.exit()
 
-
 m = mnemonic.Mnemonic('english')
 print("::Tested correct checksum sequences::")
 for word in english:
-    tested = words + ' ' + word
+    tested = "%s %s" % (words,word)
     if m.check(tested):
         print (tested)

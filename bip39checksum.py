@@ -48,6 +48,6 @@ except:
 m = mnemonic.Mnemonic('english')
 print("::Tested correct checksum sequences::")
 for word in english:
-    tested = "%s %s" % (words,word)
-    if m.check(tested):
-        print (tested)
+    seq = "%s %s" % (words,word)
+    if m.check(seq):
+        print (seq)

@@ -10,6 +10,8 @@ BIP39 checksum word finder
  pip3 install mnemonic
 ```
 
+## how to run
+
  fill the file 23words.txt with the 23 words sequence (one followed by the next and separated by space) you want to test. then just run the script. You will get a list of valid 24 words bip39 sequence as checked valid.
 
 

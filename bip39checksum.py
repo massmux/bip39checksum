@@ -25,9 +25,11 @@
 import mnemonic
 import sys
 
+(wordsfile, sequence)=("english.txt","23words.txt")
+
 try:
     print("Reading BIP39 words list file..")
-    f=open("english.txt")
+    f=open(wordsfile)
     english = f.read().strip().split('\n')
     f.close()
 except:
@@ -37,7 +39,7 @@ except:
 
 try:
     print("Reading your 23 words BIP39 sequence to check..")
-    f=open("23words.txt")
+    f=open(sequence)
     words = f.read().strip()
     f.close()
 except:

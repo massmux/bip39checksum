@@ -2,7 +2,7 @@
 BIP39 checksum word finder
 
 
- tests 23 words bip39 sequence in order to find all the valid checksums. The test is made by bruteforce check.
+ tests 23 words bip39 sequence in order to find all the valid checksums. The test is made by bruteforce check against all the possible bip39 words of english dictionary.
 
 ## dependencies
 

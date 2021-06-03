@@ -23,9 +23,10 @@
 
 
 import mnemonic
-import sys,argparse
+import sys,argparse,os
 
-wordsfile="english.txt"
+APPDIR=sys.path[0]
+wordsfile=APPDIR+"/english.txt"
 
 """ parsing arguments """
 def parseArguments():

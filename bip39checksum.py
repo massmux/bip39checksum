@@ -3,7 +3,7 @@
 
 #   Copyright (C) 2019-2020 Denali Sàrl www.denali.swiss, Massimo Musumeci, @massmux
 #
-#   Bruteforce checking checksum of 24th words of a BIP39 sequence
+#   Bruteforce checking checksum of 24th words of a bip39 sequence
 #
 #   It is subject to the license terms in the LICENSE file found in the top-level
 #   directory of this distribution.
@@ -42,19 +42,22 @@ def main():
     english = f.read().strip().split('\n')
     f.close()
   except:
-    print("Error while reading BIP39 words list file")
+    print("ERROR reading bip39 vocabulary")
     sys.exit()
     
   try:
     f=open(sequence)
     words = f.read().strip()
     f.close()
+    if len(words.split(' ')) != 23:
+        print("It seems not 23 words sequence")
+        sys.exit()
   except:
-    print("Error reading your 23 words BIP39 sequence to check")
+    print("ERROR reading your 23 words bip39 sequence")
     sys.exit()
 
   m = mnemonic.Mnemonic('english')
-  print("::Tested correct checksum sequences::")
+  print("::Tested valid bip39 sequences::\n")
   for word in english:
     seq = "%s %s" % (words,word)
     if m.check(seq):

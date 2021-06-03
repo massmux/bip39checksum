@@ -14,8 +14,14 @@ pip3 install mnemonic
 
  fill a file with the 23 words sequence (single line, words separed by a space) you want to test. Then just run the script. You will get a list of valid 24 words bip39 sequence as checked valid.
 
+
 ```
 usage: bip39checksum.py [-h] -s SEQUENCE
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SEQUENCE, --sequence SEQUENCE
+                        Specify sequence words file to check. Single line, words separed by a space
 ```
 
 

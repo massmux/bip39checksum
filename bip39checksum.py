@@ -22,51 +22,63 @@
 #   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 
 
-import mnemonic
-import sys,argparse,os
+import argparse
+import sys
 
-APPDIR=sys.path[0]
-wordsfile=APPDIR+"/english.txt"
+import mnemonic
+import os
+
+wordsfile = sys.path[0] + "/english.txt"
 
 """ parsing arguments """
-def parseArguments():
+
+
+def parse_arguments():
     global args
     parser = argparse.ArgumentParser("bip39checksum.py")
-    parser.add_argument("-s","--sequence", help="Specify sequence words file \
+    parser.add_argument("-s", "--sequence", help="Specify sequence words file \
                         to check. Single line, words separed by a space", type=str, required=True)
     args = parser.parse_args()
 
+def clear():
+    # for windows
+    if os.name == 'nt':
+        _ = os.system('cls')
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = os.system('clear')
+
 
 def main():
-  try:
-    f=open(wordsfile)
-    english = f.read().strip().split('\n')
-    f.close()
-  except:
-    print("ERROR reading bip39 vocabulary")
-    sys.exit()
-    
-  try:
-    f=open(sequence)
-    words = f.read().strip()
-    f.close()
-    if len(words.split(' ')) != 23:
-        print("It seems not 23 words sequence")
+    try:
+        f = open(wordsfile)
+        english = f.read().strip().split('\n')
+        f.close()
+    except:
+        print("ERROR reading bip39 vocabulary")
         sys.exit()
-  except:
-    print("ERROR reading your 23 words bip39 sequence")
-    sys.exit()
 
-  m = mnemonic.Mnemonic('english')
-  print("::Tested valid bip39 sequences::\n")
-  for word in english:
-    seq = "%s %s" % (words,word)
-    if m.check(seq):
-        print (seq)
+    try:
+        f = open(sequence)
+        words = f.read().strip()
+        f.close()
+        if len(words.split(' ')) != 23:
+            print("It does not seem 23 words sequence")
+            sys.exit()
+    except:
+        print("ERROR reading your 23 words bip39 sequence")
+        sys.exit()
+
+    m = mnemonic.Mnemonic('english')
+    clear()
+    print("::Tested valid bip39 sequences::\n")
+    for word in english:
+        seq = "%s %s" % (words, word)
+        if m.check(seq):
+            print(seq)
 
 
 if __name__ == "__main__":
-    parseArguments()
-    (sequence)=(args.sequence)
+    parse_arguments()
+    sequence = args.sequence
     main()
-

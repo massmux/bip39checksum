@@ -37,8 +37,9 @@ def parse_arguments():
     global args
     parser = argparse.ArgumentParser("bip39checksum.py")
     parser.add_argument("-s", "--sequence", help="Specify sequence words file \
-                        to check. Single line, words separed by a space", type=str, required=True)
+                        to check. Single line, words separated by a space", type=str, required=True)
     args = parser.parse_args()
+
 
 def clear():
     # for windows
@@ -63,10 +64,10 @@ def main():
         words = f.read().strip()
         f.close()
         if len(words.split(' ')) != 23:
-            print("It does not seem 23 words sequence")
+            print("ERROR: it does not seem 23 words sequence")
             sys.exit()
     except:
-        print("ERROR reading your 23 words bip39 sequence")
+        print("ERROR: error while reading your 23 words bip39 sequence")
         sys.exit()
 
     m = mnemonic.Mnemonic('english')
